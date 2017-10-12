@@ -1,0 +1,7 @@
+<a href="{% url 'linkd:form' %}">Form for seniors</a>
+
+<ul>
+    {% for value in dictionary.itervalues %}
+        <li>{{value}}</li>
+    {% endfor %}
+</ul>

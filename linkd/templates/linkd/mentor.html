@@ -1,0 +1,11 @@
+{% load linkd_extras %}
+
+Name<br>{{mentor.mentor_name}}<br>
+EmailId<br>{{mentor.mentor_emailid}}<br>
+Github<br>{{mentor.mentor_github}}<br>
+Interests<br>
+<ul>
+	{% for value in mentor.mentor_interest %}
+		<li>{{dictionary|keyvalue:value}}</li>
+	{% endfor %}
+</ul>

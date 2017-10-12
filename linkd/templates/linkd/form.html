@@ -1,0 +1,19 @@
+<form action="{% url 'linkd:readform' %}" method="post">
+{% csrf_token %}	
+  Name:<br>
+  <input type="text" name="mentor_name"><br>
+  Email Id:<br>
+  <input type="text" name="mentor_emailid"><br>
+  Github Link:<br>
+  <input type="text" name="mentor_github"><br>
+  <h3>Please Select your Interest</h3>
+  	{% for key,value in dictionary.items %}
+  		<input type="checkbox" name="mentor_interest" id="value{{forloop.counter}}" value="{{key}}">
+  		<label for = "area{{forloop.counter}}">
+  			{{value}}
+  		</label><br>  		
+  	{% endfor %}
+  <input type="submit" name="Submit" value="Submit">
+</form>
+  
+
