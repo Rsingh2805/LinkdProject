@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 from django.shortcuts import render,get_object_or_404
 from .models import dictionary,Mentor
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 def index(request):
@@ -19,11 +21,7 @@ def readform(request):
 		mentor_interest = ''.join(get_checked)
 		)
 	mentor.save()
-	return render(request,'linkd/mentor.html',{
-			'mentor':mentor,
-			'dictionary':dictionary,
-		})
-#	return render(request,'linkd/readform.html')
+	return HttpResponseRedirect(reverse('linkd:getmentor', args=(mentor.pk,)))
 
 def getmentor(request,mentor_id):
 	mentor = get_object_or_404(Mentor,pk=mentor_id)
@@ -31,3 +29,4 @@ def getmentor(request,mentor_id):
 			'mentor':mentor,
 			'dictionary':dictionary,
 		})
+
