@@ -4,13 +4,26 @@ from django.shortcuts import render,get_object_or_404
 from .models import dictionary,Mentor
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from difflib import SequenceMatcher
 
 
 def index(request):
-    return render(request, 'linkd/index.html',{'dictionary':dictionary})
+	try:
+		s = request.POST['search']
+		mlist = []
+		q = Mentor.objects.all()
+		for obj in q:
+			for (key,value) in dictionary.items():
+				if SequenceMatcher(None,s, value).ratio() >= 0.4 and (key in obj.interest_as_list()):
+					mlist.append(obj)
+					continue
+		return render(request, 'linkd/index.html',{'dictionary':dictionary,'mlist':mlist})
+	except:
+		return render(request, 'linkd/index.html',{'dictionary':dictionary})
 
-def form(request):
-    return render(request,'linkd/form.html',{'dictionary':dictionary})
+
+def search(request):
+	return HttpResponseRedirect(reverse('linkd:indexsearch', args=(request.POST['search'],)))
 
 def readform(request):
 	get_checked = request.POST.getlist('mentor_interest')
@@ -30,3 +43,5 @@ def getmentor(request,mentor_id):
 			'dictionary':dictionary,
 		})
 
+def form(request):
+	return render(request,'linkd/form.html',{'dictionary':dictionary})

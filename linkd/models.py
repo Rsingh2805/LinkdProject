@@ -5,10 +5,10 @@ from django.db import models
 
 dictionary = {
 	'a':'Android Development',
-	'm':'Machine Learning',
-	'w':'Web Development',
 	'c':'Computer Vision',
-	'i':'InfoSec'
+	'i':'InfoSec',
+	'm':'Machine Learning',
+	'w':'Web Development',	
 }
 
 class Mentor(models.Model):

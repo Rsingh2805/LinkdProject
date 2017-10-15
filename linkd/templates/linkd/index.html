@@ -1,7 +1,17 @@
 <a href="{% url 'linkd:form' %}">Form for seniors</a>
 
-<ul>
-    {% for value in dictionary.itervalues %}
-        <li>{{value}}</li>
-    {% endfor %}
-</ul>
+<form action="{%url 'linkd:index'%}" method="post">
+	{% csrf_token %}
+	<input type="text" name="search" placeholder="Enter your interest" required>
+	<input type="submit" name="submit" value="Search">
+</form>
+
+
+{% if mlist %}
+	{% for mentor in mlist %}
+		<a href="{% url 'linkd:getmentor' mentor.pk %}">{{mentor.mentor_name}}	</a><br>
+	{% endfor %}
+
+{% endif %}
+
+

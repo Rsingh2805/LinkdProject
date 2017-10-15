@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 """
 Django settings for LinkIdProject project.
 
@@ -25,7 +27,7 @@ SECRET_KEY = 'ix()f)2kotyscpr4&hirea)0kvyyowm3mvp(9xhgco28rz$7cp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
