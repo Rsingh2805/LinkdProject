@@ -9,7 +9,7 @@ from difflib import SequenceMatcher
 
 def index(request):
 	try:
-		s = request.POST['search']
+		s = request.GET['search']
 		mlist = []
 		q = Mentor.objects.all()
 		for obj in q:

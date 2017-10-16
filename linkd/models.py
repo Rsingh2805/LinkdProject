@@ -6,7 +6,7 @@ from django.db import models
 dictionary = {
 	'a':'Android Development',
 	'c':'Computer Vision',
-	'i':'InfoSec',
+	'i':'Information Security',
 	'm':'Machine Learning',
 	'w':'Web Development',	
 }

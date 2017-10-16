@@ -1,6 +1,6 @@
 <a href="{% url 'linkd:form' %}">Form for seniors</a>
 
-<form action="{%url 'linkd:index'%}" method="post">
+<form action="{%url 'linkd:index'%}" method="get">
 	{% csrf_token %}
 	<input type="text" name="search" placeholder="Enter your interest" required>
 	<input type="submit" name="submit" value="Search">
@@ -9,7 +9,19 @@
 
 {% if mlist %}
 	{% for mentor in mlist %}
-		<a href="{% url 'linkd:getmentor' mentor.pk %}">{{mentor.mentor_name}}	</a><br>
+		{% load linkd_extras %}
+
+        Name<br>{{mentor.mentor_name}}<br>
+        EmailId<br>{{mentor.mentor_emailid}}<br>
+        Github<br>{{mentor.mentor_github}}<br>
+        Interests<br>
+        <ul>
+            {% for value in mentor.mentor_interest %}
+                <li>{{dictionary|keyvalue:value}}</li>
+            {% endfor %}
+        </ul>
+        <hr>
+
 	{% endfor %}
 
 {% endif %}
