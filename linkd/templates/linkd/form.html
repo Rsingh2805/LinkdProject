@@ -1,17 +1,36 @@
-<form action="{% url 'linkd:readform' %}" method="post">
-{% csrf_token %}	
-  Name:<br>
-  <input type="text" name="mentor_name" required><br>
-  Email Id:<br>
-  <input type="email" name="mentor_emailid" required><br>
-  Github Link:<br>
-  <input type="text" name="mentor_github" required><br>
-  <h3>Please Select your Interest</h3>
-  	{% for key,value in dictionary.items %}
-  		<input type="checkbox" name="mentor_interest" id="value{{forloop.counter}}" value="{{key}}">
-  		<label for = "area{{forloop.counter}}">
-  			{{value}}
-  		</label><br>  		
-  	{% endfor %}
-  <input type="submit" name="Submit" value="Submit">
-</form>
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'linkd/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'linkd/form.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'linkd/footer.css' %}">
+</head>
+<body>
+{% include 'linkd/header.html' %}
+<div id="main">
+    <h2>Fill out this form.</h2>
+    <form action="{% url 'linkd:readform' %}" method="post">
+        {% csrf_token %}
+        <label for="mentor_name">What is your name?</label><br>
+        <input type="text" name="mentor_name" id="mentor_name"><br>
+        <label for="mentor_email_id">Give us your email.</label><br>
+        <input type="text" name="mentor_emailid" id="mentor_email_id"><br>
+        <label for="github">Your github handle goes here.</label><br>
+        <input type="text" name="mentor_github" id="github"><br>
+        <p>Please Select your Interest</p>
+        <div id="interestareas">
+            {% for key,value in dictionary.items %}
+            <input type="checkbox" name="mentor_interest" id="area{{ forloop.counter }}" value="{{ key }}">
+            <label for="area{{ forloop.counter }}">
+                {{ value }}
+            </label><br>
+            {% endfor %}
+        </div>
+        <input type="submit" name="Submit" value="Submit" id="submit">
+    </form>
+</div>
+{% include 'linkd/footer.html' %}
+</body>
+</html>

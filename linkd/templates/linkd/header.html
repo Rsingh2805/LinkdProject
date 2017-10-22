@@ -1,0 +1,7 @@
+<ul id="head">
+    <li><a href="{% url 'linkd:index' %}">link<span>ed</span></a></li>
+    {% url 'linkd:form' as form_url%}<br/>
+    {% if form_url != request.path %}
+        <a href="{% url 'linkd:form' %}">REGISTER</a>
+    {% endif %}
+</ul>

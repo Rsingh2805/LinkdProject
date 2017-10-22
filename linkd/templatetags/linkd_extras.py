@@ -7,3 +7,23 @@ register = template.Library()
 @register.filter
 def keyvalue(dict, key):    
     return dict[key]
+
+
+
+
+import random
+colors = ['red', 'green', 'gray', 'blue']
+color_count = 0
+
+
+@register.simple_tag
+def get_color():
+    global color_count, colors
+    if color_count % len(colors) == 0:
+        last_color = colors[-1]
+        random.shuffle(colors)
+        while last_color == colors[0]:
+            random.shuffle(colors)
+    color = colors[color_count % len(colors)]
+    color_count += 1
+    return color
