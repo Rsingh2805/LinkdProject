@@ -14,7 +14,7 @@ def index(request):
         q = Mentor.objects.all()
         for obj in q:
             for (key, value) in dictionary.items():
-                if SequenceMatcher(None, s, value).ratio() >= 0.4 and (key in obj.interest_as_list()):
+                if SequenceMatcher(None, s, value).ratio() >= 0.8 and (key in obj.interest_as_list()):
                     mlist.append(obj)
                     continue
         return render(request, 'linkd/index.html', {'dictionary': dictionary, 'mlist': mlist, 'query': s})

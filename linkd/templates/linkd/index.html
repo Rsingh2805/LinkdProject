@@ -31,7 +31,7 @@ Interests<br>
         {% if mlist %}
             <div id="cardcontainer">
                 {% for mentor in mlist %}
-                    <a href="#">
+                    <a href="{% url 'linkd:getmentor' mentor.pk %}">
                         <div class="card">
                             <div class="avatar" style="background-color:{% get_color %};">{{ mentor.mentor_name|first|upper }}</div>
                             <div class="label">{{ mentor.mentor_name }}</div>
