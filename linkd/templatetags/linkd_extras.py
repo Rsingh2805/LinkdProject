@@ -31,4 +31,4 @@ def get_color():
             random.shuffle(colors)
     color = colors[color_count % len(colors)]
     color_count += 1
-    return color
+    return '#' + color
