@@ -8,7 +8,7 @@ Interests<br>
         <li>  dictionary|keyvalue:value  </li>
      endfor
 </ul>-->
-{% load static %}
+{% load staticfiles %}
 {% load linkd_extras %}
 <html>
 <head>
@@ -21,13 +21,13 @@ Interests<br>
 <div>
     {% include 'linkd/header.html' %}
     <div id="main">
-        <form action="{%url 'linkd:index'%}" method="get">
+        <form action="{%url 'linkd:index'%}" method="post">
             {% csrf_token %}
             <div id="search">
                 <input type="text" name="search" value="{{ query }}" placeholder="Enter keywords (e.g. android)">
                 <input type="submit" name="submit" value="">
             </div>
-        </form><h3>
+        </form>
         {% if mlist %}
             <div id="cardcontainer">
                 {% for mentor in mlist %}
@@ -39,6 +39,8 @@ Interests<br>
                     </a><br/>
                 {% endfor %}
             </div>
+            {% else %}
+            No matches found! Try another search
         {% endif %}
     </div>
     {% include 'linkd/footer.html' %}

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404
-from models import dictionary, Mentor
+from linkd.models import INTEREST_AREAS, Mentor
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from difflib import SequenceMatcher
@@ -9,17 +9,17 @@ from difflib import SequenceMatcher
 
 def index(request):
     try:
-        s = request.GET['search']
-        mlist = []
-        q = Mentor.objects.all()
-        for obj in q:
-            for (key, value) in dictionary.items():
-                if SequenceMatcher(None, s, value).ratio() >= 0.4 and (key in obj.interest_as_list()):
-                    mlist.append(obj)
-                    continue
-        return render(request, 'linkd/index.html', {'dictionary': dictionary, 'mlist': mlist, 'query': s})
+        search_query = request.POST['search']
+        mList = []
+
+        interest = max(INTEREST_AREAS.items(), key=lambda(k, v): SequenceMatcher(None, search_query, v).ratio())[0]
+
+        mentors = Mentor.objects.filter(mentor_interest__contains=interest)
+        for mentor in mentors:
+            mList.append(mentor)
+        return render(request, 'linkd/index.html', {'dictionary': INTEREST_AREAS, 'mlist': mList, 'query': search_query})
     except:
-        return render(request, 'linkd/index.html', {'dictionary': dictionary})
+        return render(request, 'linkd/index.html', {'dictionary': INTEREST_AREAS})
 
 
 def search(request):
@@ -42,9 +42,9 @@ def getmentor(request, mentor_id):
     mentor = get_object_or_404(Mentor, pk=mentor_id)
     return render(request, 'linkd/mentor.html', {
         'mentor': mentor,
-        'dictionary': dictionary,
+        'dictionary': INTEREST_AREAS,
     })
 
 
 def form(request):
-    return render(request, 'linkd/form.html', {'dictionary': dictionary})
+    return render(request, 'linkd/form.html', {'dictionary': INTEREST_AREAS})
