@@ -1,0 +1,15 @@
+div#footer {
+  width:100vw;
+  height: 30px;
+  background: #fafafa;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  font-family: "Roboto";
+  font-size: 15px;
+  text-align: center;
+  padding: 10px;
+  color: #555;
+
+  min-width: 600px;
+}

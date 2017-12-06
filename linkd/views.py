@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404
-from models import INTEREST_AREAS, Mentor
+from linkd.models import INTEREST_AREAS, Mentor
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from difflib import SequenceMatcher
@@ -12,7 +12,7 @@ def index(request):
         search_query = request.GET['search']
         mList = []
 
-        interest = max(INTEREST_AREAS.items(), key=lambda (k, v): SequenceMatcher(None, search_query, v).ratio())[0]
+        interest = max(INTEREST_AREAS.items(), key=lambda k, v: SequenceMatcher(None, search_query, v).ratio())[0]
 
         mentors = Mentor.objects.filter(mentor_interest__contains=interest)
         for mentor in mentors:
