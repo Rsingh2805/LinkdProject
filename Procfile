@@ -1,1 +1,1 @@
-web: gunicorn LinkIdProject.wsgi --log-file -
+web: gunicorn LinkIdProject.wsgi
