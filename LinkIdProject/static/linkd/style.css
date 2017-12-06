@@ -1,0 +1,112 @@
+body{
+  background: #fafafa;
+  font-family: "Roboto";
+  min-width:600px;
+  width: auto !important;
+  width:600px;
+}
+div#main{
+  text-align: center;
+}
+form{
+  margin: 40vh auto 0;
+  width: 600px;
+}
+form input[type='text']{
+  border: 2px solid rgba(0,0,0,0);
+  /*border-bottom: 2px solid #1DE9B6;*/
+  font-size: 1.3em;
+  color: #263238;
+  width: 400px;
+  padding: 10px;
+  background-color: transparent;
+}
+form input[type='text']:hover{
+  /*border-bottom: 2px solid #00BFA5;*/
+}
+form input[type='text']:focus{
+  outline: none;
+  /*border-bottom: 2px solid #00BFA5;*/
+}
+form input[type='text']:focus::-webkit-input-placeholder{
+    color: transparent!important;
+}
+form input[type='text']:focus::-moz-placeholder{
+    color: transparent!important;
+}
+form input[type='text']:focus:-moz-placeholder{
+    color: transparent!important;
+}
+div#search {
+  width: 474px;
+  margin: 0 auto 80px;
+  border-bottom: 2px solid lightgray;
+}
+div#search:hover {
+  border-bottom-color: #1DE9B6;
+}
+div#search:hover input[type='submit']{
+  filter: brightness(1.1);
+}
+div#search:focus-within {
+  border-bottom-color: #00BFA5;
+}
+div#search:focus-within input[type='submit']{
+  filter: initial;
+}
+form input[type='submit']{
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  border-color: transparent;
+  background: transparent;
+  background: url("images/search.svg") no-repeat center;
+  background-size: contain;
+  filter: grayscale(1) brightness(1.2);
+}
+form input[type='submit']:hover{
+  filter: brightness(1.1);
+}
+form input[type='submit']:focus{
+  outline: none;
+  filter: brightness(0.9);
+}
+div#cardcontainer {
+  width: 280px;
+  margin: 20px auto 80px;
+  /*column-count: 2;*/
+}
+div#cardcontainer a {
+  text-decoration: none;
+  font-size: 1em;
+  color: #37474F;
+}
+div#cardcontainer a div.card {
+  margin: 0px auto;
+  padding: 15px 0px 15px 0;
+  background: white;
+  /*width: 270px;*/
+  border-radius: 1px;
+  box-shadow: 1px 1px 1px #bbb;
+  transform: box-shadow 0.2s;
+}
+div#cardcontainer a div.card:hover {
+  box-shadow: 1px 1px 1px 1px #bbb;
+}
+div#cardcontainer a div.avatar{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  vertical-align: middle;
+  padding: 10px;
+  margin: 0px 20px;
+  font-size: 35px;
+  color: white;
+  border-radius: 50%;
+}
+div#cardcontainer a div.label{
+  display: inline-block;
+  text-align: left;
+  width: 160px;
+  padding-left: 10px;
+}
