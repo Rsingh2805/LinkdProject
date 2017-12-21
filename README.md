@@ -13,4 +13,4 @@ Contributors -
 	Aman Aggarwal (Mentor)
 	Anoop Singh, Hardik Meena and Harsh Jain (HTML stuff)
 	Rahul Singh and Vinay Aggarwal (Backend)
-	Naveen Tiwari (Styling)
+	Naveen Tiwari (Frontend)
